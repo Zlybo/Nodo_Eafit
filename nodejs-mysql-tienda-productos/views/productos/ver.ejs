@@ -7,6 +7,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Email</th>
+                <th>Genero</th>
                 <th>Contraseña</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
@@ -17,6 +18,7 @@
             <tr>
                 <td><%= producto.nombre %></td>
                 <td><%= producto.email %></td>
+                <td><%= producto.genero %></td>
                 <td><%= producto.contraseña %></td>
                 <td>
                     <a href="/productos/editar/<%= producto.id %>" class="btn btn-warning">
