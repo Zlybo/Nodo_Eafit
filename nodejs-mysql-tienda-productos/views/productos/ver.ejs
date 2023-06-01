@@ -16,10 +16,10 @@
         <tbody>
             <% productos.forEach(producto => { %>
             <tr>
-                <td><%= usuario.nombre %></td>
-                <td><%= usuario.email %></td>
-                <td><%= usuario.genero %></td>
-                <td><%= usuario.contraseña %></td>
+                <td><%= producto.nombre %></td>
+                <td><%= producto.precio %></td>
+                <td><%= producto.genero %></td>
+                <td><%= producto.contraseña %></td>
                 <td>
                     <a href="/productos/editar/<%= producto.id %>" class="btn btn-warning">
                         Editar
