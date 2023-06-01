@@ -12,7 +12,7 @@ module.exports = {
     },
     obtener() {
         return new Promise((resolve, reject) => {
-            conexion.query(`select id, nombre, email, genero, contraseña from usuarios`,
+            conexion.query(`select id_usuario, nombre, email, genero, contraseña from usuarios`,
                 (err, resultados) => {
                     if (err) reject(err);
                     else resolve(resultados);
@@ -21,7 +21,7 @@ module.exports = {
     },
     obtenerPorId(id) {
         return new Promise((resolve, reject) => {
-            conexion.query(`select id, nombre, email, genero, contraseña from usuarios where id = ?`,
+            conexion.query(`select id_usuario, nombre, email, genero, contraseña from usuarios where id = ?`,
                 [id],
                 (err, resultados) => {
                     if (err) reject(err);
@@ -36,7 +36,7 @@ module.exports = {
             email = ?,
             genero = ?,
             contraseña = ?
-            where id = ?`,
+            where id_usuario = ?`,
                 [nombre, email, genero, contraseña, id],
                 (err) => {
                     if (err) reject(err);
@@ -47,7 +47,7 @@ module.exports = {
     eliminar(id) {
         return new Promise((resolve, reject) => {
             conexion.query(`delete from usuarios
-            where id = ?`,
+            where id_usuario = ?`,
                 [id],
                 (err) => {
                     if (err) reject(err);
