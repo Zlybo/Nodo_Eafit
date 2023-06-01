@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const productoModel = require("../models/usuario");
+const usuarioModel = require("../models/usuario");
 
 router.get('/', function (req, res, next) {
-    productoModel
+    usuarioModel
         .obtener()
-        .then(productos => {
+        .then(usuarios => {
             res.render("usuarios/ver", {
-                productos: productos,
+                usuarios: usuarios,
             });
         })
         .catch(err => {
@@ -28,7 +28,7 @@ router.post('/insertar', function (req, res, next) {
         return res.status(500).send("No hay ningun dato");
     }
     // Si todo va bien, seguimos
-    productoModel
+    usuarioModel
         .insertar(nombre, email, genero, contraseña)
         .then(idProductoInsertado => {
             res.redirect("/usuarios");
@@ -38,7 +38,7 @@ router.post('/insertar', function (req, res, next) {
         });
 });
 router.get('/eliminar/:id', function (req, res, next) {
-    productoModel
+    usuarioModel
         .eliminar(req.params.id)
         .then(() => {
             res.redirect("/usuarios");
@@ -48,12 +48,12 @@ router.get('/eliminar/:id', function (req, res, next) {
         });
 });
 router.get('/editar/:id', function (req, res, next) {
-    productoModel
+    usuarioModel
         .obtenerPorId(req.params.id)
-        .then(producto => {
-            if (producto) {
+        .then(usuario => {
+            if (usuario) {
                 res.render("usuarios/editar", {
-                    producto: producto,
+                    usuario: usuario,
                 });
             } else {
                 return res.status(500).send("No existe usuario con ese id");
@@ -72,7 +72,7 @@ router.post('/actualizar/', function (req, res, next) {
         return res.status(500).send("No hay suficientes datos");
     }
     // Si todo va bien, seguimos
-    productoModel
+    usuarioModel
         .actualizar(id, nombre, email, genero, contraseña)
         .then(() => {
             res.redirect("/usuarios");
