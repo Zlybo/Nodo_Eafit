@@ -1,10 +1,10 @@
 const conexion = require("../conexion");
 
 module.exports = {
-    insertar(nombre, email, contraseña) {
+    insertar(nombre, email, genero, contraseña) {
         return new Promise((resolve, reject) => {
-            conexion.query(`insert into productos (nombre, email, contraseña) values (?, ?, ?)`,
-                [nombre, email, contraseña], (err, resultados) => {
+            conexion.query(`insert into productos (nombre, email, genero, contraseña) values (?, ?, ?, ?)`,
+                [nombre, email, genero, contraseña], (err, resultados) => {
                     if (err) reject(err);
                     else resolve(resultados.insertId);
                 });
@@ -12,7 +12,7 @@ module.exports = {
     },
     obtener() {
         return new Promise((resolve, reject) => {
-            conexion.query(`select id, nombre, email, contraseña from productos`,
+            conexion.query(`select id, nombre, email, genero, contraseña from productos`,
                 (err, resultados) => {
                     if (err) reject(err);
                     else resolve(resultados);
@@ -21,7 +21,7 @@ module.exports = {
     },
     obtenerPorId(id) {
         return new Promise((resolve, reject) => {
-            conexion.query(`select id, nombre, email, contraseña from productos where id = ?`,
+            conexion.query(`select id, nombre, email, genero, contraseña from productos where id = ?`,
                 [id],
                 (err, resultados) => {
                     if (err) reject(err);
@@ -29,14 +29,15 @@ module.exports = {
                 });
         });
     },
-    actualizar(id, nombre, email, contraseña) {
+    actualizar(id, nombre, email, genero, contraseña) {
         return new Promise((resolve, reject) => {
             conexion.query(`update productos
             set nombre = ?,
             email = ?
+            genero = ?
             contraseña = ?
             where id = ?`,
-                [nombre, email, contraseña, id],
+                [nombre, email, genero, contraseña, id],
                 (err) => {
                     if (err) reject(err);
                     else resolve();
