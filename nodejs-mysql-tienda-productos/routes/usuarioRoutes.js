@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
             });
         })
         .catch(err => {
-            return res.status(500).send("Error insertando usuario");
+            return res.status(500).send("Error obteniendo usuarios");
         });
 
 });
@@ -67,13 +67,13 @@ router.post('/actualizar/', function (req, res, next) {
     // Obtener el nombre y precio. Es lo mismo que
     // const nombre = req.body.nombre;
     // const precio = req.body.precio;
-    const { id, nombre, email, genero, contraseña } = req.body;
-    if (!nombre || !email || !genero || !contraseña || !id) {
+    const { id_usuario, nombre, email, genero, contraseña } = req.body;
+    if (!nombre || !email || !genero || !contraseña || !id_usuario) {
         return res.status(500).send("No hay suficientes datos");
     }
     // Si todo va bien, seguimos
     usuarioModel
-        .actualizar(id, nombre, email, genero, contraseña)
+        .actualizar(id_usuario, nombre, email, genero, contraseña)
         .then(() => {
             res.redirect("/usuarios");
         })
