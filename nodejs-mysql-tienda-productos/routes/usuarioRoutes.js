@@ -10,9 +10,6 @@ router.get('/', function (req, res, next) {
             res.render("usuarios/ver", {
                 usuarios: usuarios,
             });
-        })
-        .catch(err => {
-            return res.status(500).send("Error obteniendo usuarios");
         });
 
 });
