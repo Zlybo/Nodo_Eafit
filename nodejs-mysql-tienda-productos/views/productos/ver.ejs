@@ -6,8 +6,8 @@
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Email</th>
-                <th>Contraseña</th>
+                <th>Precio</th>
+                <th>Nombre2</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
@@ -16,8 +16,8 @@
             <% productos.forEach(producto => { %>
             <tr>
                 <td><%= producto.nombre %></td>
-                <td><%= producto.email %></td>
-                <td><%= producto.contraseña %></td>
+                <td><%= producto.precio %></td>
+                <td><%= producto.nombre2 %></td>
                 <td>
                     <a href="/productos/editar/<%= producto.id %>" class="btn btn-warning">
                         Editar
