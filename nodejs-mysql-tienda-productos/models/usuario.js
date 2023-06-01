@@ -37,11 +37,7 @@ module.exports = {
             genero = ?,
             contraseña = ?
             where id_usuario = ?`,
-                [nombre, email, genero, contraseña, id],
-                (err) => {
-                    if (err) reject(err);
-                    else resolve();
-                });
+                [nombre, email, genero, contraseña, id]);
         });
     },
     eliminar(id) {
