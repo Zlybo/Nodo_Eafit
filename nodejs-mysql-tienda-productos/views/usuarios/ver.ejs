@@ -1,6 +1,6 @@
 <%- include("../header"); %>
 <div class="col-12">
-    <h1>Productos</h1>
+    <h1>Usuarios</h1>
     <a href="/usuarios/agregar" class="btn btn-primary mb-2">Agregar</a>
     <table class="table table-bordered">
         <thead>
@@ -14,19 +14,19 @@
             </tr>
         </thead>
         <tbody>
-            <% productos.forEach(producto => { %>
+            <% usuarios.forEach(usuario => { %>
             <tr>
-                <td><%= producto.nombre %></td>
-                <td><%= producto.email %></td>
-                <td><%= producto.genero %></td>
-                <td><%= producto.contraseña %></td>
+                <td><%= usuario.nombre %></td>
+                <td><%= usuario.email %></td>
+                <td><%= usuario.genero %></td>
+                <td><%= usuario.contraseña %></td>
                 <td>
-                    <a href="/usuarios/editar/<%= producto.id %>" class="btn btn-warning">
+                    <a href="/usuarios/editar/<%= usuario.id %>" class="btn btn-warning">
                         Editar
                     </a>
                 </td>
                 <td>
-                    <a href="/usuarios/eliminar/<%= producto.id %>" class="btn btn-danger">
+                    <a href="/usuarios/eliminar/<%= usuario.id %>" class="btn btn-danger">
                         Eliminar
                     </a>
                 </td>
