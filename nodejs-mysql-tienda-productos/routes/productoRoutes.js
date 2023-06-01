@@ -1,23 +1,23 @@
 const express = require('express');
 const router = express.Router();
 
-const productoModel = require("../models/producto");
+const productoModel = require("../models/usuario");
 
 router.get('/', function (req, res, next) {
     productoModel
         .obtener()
         .then(productos => {
-            res.render("productos/ver", {
+            res.render("usuarios/ver", {
                 productos: productos,
             });
         })
         .catch(err => {
-            return res.status(500).send("Error obteniendo productos");
+            return res.status(500).send("Error obteniendo usuarios");
         });
 
 });
 router.get('/agregar', function (req, res, next) {
-    res.render("productos/agregar");
+    res.render("usuarios/agregar");
 });
 router.post('/insertar', function (req, res, next) {
     // Obtener el nombre y precio. Es lo mismo que
@@ -31,17 +31,17 @@ router.post('/insertar', function (req, res, next) {
     productoModel
         .insertar(nombre, email, genero, contraseña)
         .then(idProductoInsertado => {
-            res.redirect("/productos");
+            res.redirect("/usuarios");
         })
         .catch(err => {
-            return res.status(500).send("Error insertando producto");
+            return res.status(500).send("Error insertando usuario");
         });
 });
 router.get('/eliminar/:id', function (req, res, next) {
     productoModel
         .eliminar(req.params.id)
         .then(() => {
-            res.redirect("/productos");
+            res.redirect("/usuarios");
         })
         .catch(err => {
             return res.status(500).send("Error eliminando");
@@ -52,15 +52,15 @@ router.get('/editar/:id', function (req, res, next) {
         .obtenerPorId(req.params.id)
         .then(producto => {
             if (producto) {
-                res.render("productos/editar", {
+                res.render("usuarios/editar", {
                     producto: producto,
                 });
             } else {
-                return res.status(500).send("No existe producto con ese id");
+                return res.status(500).send("No existe usuario con ese id");
             }
         })
         .catch(err => {
-            return res.status(500).send("Error obteniendo producto");
+            return res.status(500).send("Error obteniendo usuario");
         });
 });
 router.post('/actualizar/', function (req, res, next) {
@@ -75,10 +75,10 @@ router.post('/actualizar/', function (req, res, next) {
     productoModel
         .actualizar(id, nombre, email, genero, contraseña)
         .then(() => {
-            res.redirect("/productos");
+            res.redirect("/usuarios");
         })
         .catch(err => {
-            return res.status(500).send("Error actualizando producto");
+            return res.status(500).send("Error actualizando usuario");
         });
 });
 

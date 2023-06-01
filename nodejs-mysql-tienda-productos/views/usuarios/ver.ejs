@@ -1,0 +1,38 @@
+<%- include("../header"); %>
+<div class="col-12">
+    <h1>Productos</h1>
+    <a href="/usuarios/agregar" class="btn btn-primary mb-2">Agregar</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Genero</th>
+                <th>Contraseña</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% productos.forEach(producto => { %>
+            <tr>
+                <td><%= producto.nombre %></td>
+                <td><%= producto.email %></td>
+                <td><%= producto.genero %></td>
+                <td><%= producto.contraseña %></td>
+                <td>
+                    <a href="/usuarios/editar/<%= producto.id %>" class="btn btn-warning">
+                        Editar
+                    </a>
+                </td>
+                <td>
+                    <a href="/usuarios/eliminar/<%= producto.id %>" class="btn btn-danger">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+            <% })%>
+        </tbody>
+    </table>
+</div>
+<%- include("../footer"); %>
