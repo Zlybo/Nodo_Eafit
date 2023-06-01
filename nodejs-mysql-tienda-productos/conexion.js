@@ -8,5 +8,5 @@ module.exports = mysql.createPool({
 // host: "host-aws-rds",
   user: "dbuser",
   password: "Eafit2023.",
-  database: "NODO_Eafit"
+  database: "tienda"
 });
