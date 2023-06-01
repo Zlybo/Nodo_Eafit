@@ -3,7 +3,7 @@ const conexion = require("../conexion");
 module.exports = {
     insertar(nombre, email, genero, contraseña) {
         return new Promise((resolve, reject) => {
-            conexion.query(`insert into productos (nombre, email, genero, contraseña) values (?, ?, ?, ?)`,
+            conexion.query(`insert into usuarios (nombre, email, genero, contraseña) values (?, ?, ?, ?)`,
                 [nombre, email, genero, contraseña], (err, resultados) => {
                     if (err) reject(err);
                     else resolve(resultados.insertId);
@@ -12,7 +12,7 @@ module.exports = {
     },
     obtener() {
         return new Promise((resolve, reject) => {
-            conexion.query(`select id, nombre, email, genero, contraseña from productos`,
+            conexion.query(`select id, nombre, email, genero, contraseña from usuarios`,
                 (err, resultados) => {
                     if (err) reject(err);
                     else resolve(resultados);
@@ -21,7 +21,7 @@ module.exports = {
     },
     obtenerPorId(id) {
         return new Promise((resolve, reject) => {
-            conexion.query(`select id, nombre, email, genero, contraseña from productos where id = ?`,
+            conexion.query(`select id, nombre, email, genero, contraseña from usuarios where id = ?`,
                 [id],
                 (err, resultados) => {
                     if (err) reject(err);
@@ -31,7 +31,7 @@ module.exports = {
     },
     actualizar(id, nombre, email, genero, contraseña) {
         return new Promise((resolve, reject) => {
-            conexion.query(`update productos
+            conexion.query(`update usuarios
             set nombre = ?,
             email = ?,
             genero = ?,
@@ -46,7 +46,7 @@ module.exports = {
     },
     eliminar(id) {
         return new Promise((resolve, reject) => {
-            conexion.query(`delete from productos
+            conexion.query(`delete from usuarios
             where id = ?`,
                 [id],
                 (err) => {
