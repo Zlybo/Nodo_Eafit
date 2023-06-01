@@ -7,7 +7,9 @@ use tienda;
 create table productos(
     id integer not null auto_increment,
     nombre varchar(255),
-    precio decimal(5, 2),
+    email varchar(255),
+	genero varchar(255),
+	contraseña varchar(255),
     primary key(id)
 );
 
@@ -19,3 +21,5 @@ flush privileges;
 
 insert into productos (nombre,precio) values("martillo",19.00);
 insert into productos (nombre,precio) values("destornillador",10.50);
+
+insert into productos (nombre,email,genero, contraseña) values("destornillador","pepe","hombre","carlos");
