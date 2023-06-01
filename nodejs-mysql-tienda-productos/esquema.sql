@@ -22,4 +22,8 @@ flush privileges;
 insert into productos (nombre,precio) values("martillo",19.00);
 insert into productos (nombre,precio) values("destornillador",10.50);
 
-insert into productos (nombre,email,genero, contraseña) values("destornillador","pepe","hombre","carlos");
+insert into productos (nombre,email,genero, contraseña) 
+values('Juan Pérez', 'juanperez@gmail.com', 'Masculino', '123456');
+
+insert into productos (nombre,email,genero, contraseña) 
+values('Carlos Rodríguez', 'carlosrodriguez@yahoo.com', 'Masculino', 'qwerty');
