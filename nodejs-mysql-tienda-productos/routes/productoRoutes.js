@@ -20,6 +20,9 @@ router.get('/agregar', function (req, res, next) {
     res.render("productos/agregar");
 });
 router.post('/insertar', function (req, res, next) {
+    // Obtener el nombre y email. Es lo mismo que
+    // const nombre = req.body.nombre;
+    // const email = req.body.email;
     const { nombre, email, contraseña } = req.body;
     if (!nombre || !email || !contraseña) {
         return res.status(500).send("No hay nombre o email o contraseña");
@@ -61,6 +64,9 @@ router.get('/editar/:id', function (req, res, next) {
         });
 });
 router.post('/actualizar/', function (req, res, next) {
+    // Obtener el nombre y email. Es lo mismo que
+    // const nombre = req.body.nombre;
+    // const email = req.body.email;
     const { id, nombre, email, contraseña } = req.body;
     if (!nombre || !email || !contraseña || !id) {
         return res.status(500).send("No hay suficientes datos");
