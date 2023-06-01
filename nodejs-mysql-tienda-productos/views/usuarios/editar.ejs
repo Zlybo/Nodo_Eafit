@@ -3,7 +3,7 @@
     <h1>Editar usuario</h1>
     <form method="post" action="/usuarios/actualizar">
 
-        <input value="<%= usuario.id %>" name="id" type="hidden">
+        <input value="<%= usuario.id_usuario %>" name="id_usuario" type="hidden">
         <div class="form-group">
             <label for="nombre">Nombre</label>
             <input value="<%= usuario.nombre %>" required id="nombre" placeholder="Nombre del usuario"
