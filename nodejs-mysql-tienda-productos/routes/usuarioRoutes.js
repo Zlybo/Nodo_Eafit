@@ -76,9 +76,6 @@ router.post('/actualizar/', function (req, res, next) {
         .actualizar(id, nombre, email, genero, contraseña)
         .then(() => {
             res.redirect("/usuarios");
-        })
-        .catch(err => {
-            return res.status(500).send("Error actualizando usuario");
         });
 });
 
