@@ -21,7 +21,7 @@ module.exports = {
     },
     obtenerPorId(id) {
         return new Promise((resolve, reject) => {
-            conexion.query(`select id_usuario, nombre, email, genero, contraseña from usuarios where id = ?`,
+            conexion.query(`select id_usuario, nombre, email, genero, contraseña from usuarios where id_usuario = ?`,
                 [id],
                 (err, resultados) => {
                     if (err) reject(err);
