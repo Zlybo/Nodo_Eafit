@@ -20,16 +20,13 @@ router.get('/agregar', function (req, res, next) {
     res.render("productos/agregar");
 });
 router.post('/insertar', function (req, res, next) {
-    // Obtener el nombre y precio. Es lo mismo que
-    // const nombre = req.body.nombre;
-    // const precio = req.body.precio;
-    const { nombre, precio, nombre2 } = req.body;
-    if (!nombre || !precio || !nombre2) {
-        return res.status(500).send("No hay nombre o precio o nombre2");
+    const { nombre, email, contraseña } = req.body;
+    if (!nombre || !email || !contraseña) {
+        return res.status(500).send("No hay nombre o email o contraseña");
     }
     // Si todo va bien, seguimos
     productoModel
-        .insertar(nombre, precio, nombre2)
+        .insertar(nombre, email, contraseña)
         .then(idProductoInsertado => {
             res.redirect("/productos");
         })
@@ -64,16 +61,13 @@ router.get('/editar/:id', function (req, res, next) {
         });
 });
 router.post('/actualizar/', function (req, res, next) {
-    // Obtener el nombre y precio. Es lo mismo que
-    // const nombre = req.body.nombre;
-    // const precio = req.body.precio;
-    const { id, nombre, precio, nombre2 } = req.body;
-    if (!nombre || !precio || !nombre2 || !id) {
+    const { id, nombre, email, contraseña } = req.body;
+    if (!nombre || !email || !contraseña || !id) {
         return res.status(500).send("No hay suficientes datos");
     }
     // Si todo va bien, seguimos
     productoModel
-        .actualizar(id, nombre, precio, nombre2)
+        .actualizar(id, nombre, email, contraseña)
         .then(() => {
             res.redirect("/productos");
         })
